@@ -16,11 +16,11 @@ volumes:
     driver: local
     driver_opts:
       type: none
-      device: '/app/graph-cache'
+      device: /app/data
       o: bind
   osm-data:
     driver: local
     driver_opts:
       type: none
-      device: '/app/graph-cache'
+      device: /app/data
       o: bind

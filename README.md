@@ -19,17 +19,18 @@ This project sets up a GraphHopper server using Docker Compose. Follow the steps
 ## Steps to Run
 
 1. **Clone the Repository**
-
+   
    Clone this repository to your local machine.
 2. **Prepare Data Directories**
-
+   
    Ensure the following directories exist and are properly configured:
-
-   - `E:\DOCKERDATA\K01` for storing graph-cache and OSM data.
+   
+   - `/app/data` for storing graph-cache and OSM data.
 3. **Build and Start the Docker Container**
-
+   
    Run the following command to build and start the container:
-
+   
    ```sh
    docker-compose -f docker-compose.graphhoper.yml up -d
    ```
+
