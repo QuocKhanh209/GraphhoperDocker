@@ -1,0 +1,26 @@
+version: '3.8'
+services:
+  graphhopper:
+    build:
+      context: .
+      dockerfile: DockerFile
+    ports:
+      - "8989:8989"
+    volumes:
+      - graphhopper-data:/app/graph-cache
+      - osm-data:/app/osm-data
+    restart: unless-stopped
+
+volumes:
+  graphhopper-data:
+    driver: local
+    driver_opts:
+      type: none
+      device: '/app/graph-cache'
+      o: bind
+  osm-data:
+    driver: local
+    driver_opts:
+      type: none
+      device: '/app/graph-cache'
+      o: bind

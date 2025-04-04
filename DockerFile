@@ -1,0 +1,26 @@
+FROM openjdk:17-jdk-slim
+
+# Thiết lập thư mục làm việc
+WORKDIR /app
+
+# Cài đặt các công cụ cần thiết
+RUN apt-get update && apt-get install -y wget && rm -rf /var/lib/apt/lists/*
+
+# Tải GraphHopper từ Maven repository
+# RUN wget https://repo1.maven.org/maven2/com/graphhopper/graphhopper-web/10.0/graphhopper-web-10.0.jar -O graphhopper-web.jar
+
+# Sao chép file graphhopper-web-10.0.jar từ thư mục cục bộ
+COPY graphhopper-web-10.2.jar /app/graphhopper-web.jar
+# Tạo file cấu hình config.yml
+# RUN echo "graphhopper:\n  datareader:\n    file: berlin-latest.osm.pbf\n  graph:\n    location: ./graph-cache\n  server:\n    application_connectors:\n      - type: http\n        port: 8989\n    admin_connectors:\n      - type: http\n        port: 8990" > config.yml
+COPY config.yml /app/config.yml
+
+# Script khởi động để tải dữ liệu OSM tự động nếu chưa có
+COPY entrypoint.sh /app/entrypoint.sh
+RUN chmod +x /app/entrypoint.sh
+
+# Mở port
+EXPOSE 8989
+
+# Chạy GraphHopper với entrypoint
+ENTRYPOINT ["/app/entrypoint.sh"]
