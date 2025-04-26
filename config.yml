@@ -1,7 +1,6 @@
 graphhopper:
   # Đường dẫn tới file dữ liệu OSM
-  datareader.file: /app/osm-data/berlin-latest.osm.pbf
-    # file: /app/osm-data/berlin-latest.osm.pbf
+  datareader.file: /app/osm-data/vietnam-latest.osm.pbf
     
   # Thư mục lưu trữ graph đã xử lý
   graph:

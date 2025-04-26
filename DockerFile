@@ -11,8 +11,8 @@ RUN apt-get update && apt-get install -y wget && rm -rf /var/lib/apt/lists/*
 
 # Sao chép file graphhopper-web-10.0.jar từ thư mục cục bộ
 COPY graphhopper-web-10.2.jar /app/graphhopper-web.jar
-# Tạo file cấu hình config.yml
-# RUN echo "graphhopper:\n  datareader:\n    file: berlin-latest.osm.pbf\n  graph:\n    location: ./graph-cache\n  server:\n    application_connectors:\n      - type: http\n        port: 8989\n    admin_connectors:\n      - type: http\n        port: 8990" > config.yml
+
+# Copy file cấu hình config.yml
 COPY config.yml /app/config.yml
 
 # Script khởi động để tải dữ liệu OSM tự động nếu chưa có
